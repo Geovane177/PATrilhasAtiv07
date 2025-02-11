@@ -1,0 +1,51 @@
+using System;
+
+namespace Atividades
+{
+	class Program
+	{
+		public static void Main(string[] args)
+		{
+			int[,] painel = new int[10, 10];
+			var aleatorio = new Random();
+			int diagoPrin = 0, diagoSec = 0;
+			double mediaPrin = 0, mediaSec = 0, media = 0;
+			
+			for (int i = 0; i < 10; i++) {
+				for (int j = 0; j < 10; j++) {
+					painel[i, j] = aleatorio.Next(10);
+					if (i == j) {
+						diagoPrin += painel[i, j];
+						media += 1;
+					}
+				}
+			}
+			Console.Clear();
+			Console.WriteLine("MATRIZ");
+			for (int i = 0; i < 10; i++) {
+				Console.Write("[");
+				for (int j = 0; j < 10; j++) {
+					
+					Console.Write(" "+painel[i, j] );
+				}
+				              Console.Write(" ]");
+				Console.WriteLine();	
+			}
+			int cont = 9;
+			for (int i = 0; i < 10; i++) {
+				diagoSec += painel[i, cont];
+				cont--;
+				}
+			
+			mediaPrin = diagoPrin / media;
+			mediaSec = diagoSec / media;
+			Console.WriteLine("Soma da diagonal principal: "+diagoPrin +" e a media é: "+ mediaPrin);
+			Console.WriteLine("Soma da diagonal secundaria: "+ diagoSec +" e a media é: "+ mediaSec);
+			
+			
+			Console.WriteLine();
+			Console.Write("Press any key to continue . . . ");
+			Console.ReadKey(true);
+		}
+	}
+}
